@@ -1,27 +1,37 @@
-*.py[co]
+#
+#	generic gitignore
+#
 
-# Packages
-*.egg
-*.egg-info
-dist
-build
-eggs
-parts
-bin
-var
-sdist
-develop-eggs
-.installed.cfg
+syntax: glob
+.DS_Store
+*.class
+*.ser
+*~
+*.bak
+*.old
+*.pyc
+*.pyo
 
-# Installer logs
-pip-log.txt
+# ide
+.settings
+.classpath
+.project
+.manager
+.pydevproject
+.idea
 
-# Unit test / coverage reports
-.coverage
-.tox
+# building
+#target
+#build
+#null
+#tmp*
 
-#Translations
-*.mo
+# scm
+.svn
+.CVS
+.hg*
 
-#Mr Developer
-.mr.developer.cfg
+# syntax: regexp
+# ^\.pc/
+
+#.
