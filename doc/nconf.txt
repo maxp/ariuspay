@@ -1,0 +1,14 @@
+
+https://github.com/lorenwest/node-config
+
+
+$NODE_CONFIG_DIR or 'config'
+EXT: [yaml,coffee,json,js]
+STNAME: $HOST or require('os').hostname()
+DEPLOYMENT: $NODE_ENV or 'development'
+
+    default.EXT
+    HOSTNAME.EXT
+    DEPLOYMENT.EXT
+    HOSTNAME-DEPLOYMENT.EXT
+    runtime.json

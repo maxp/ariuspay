@@ -20,6 +20,10 @@ syntax: glob
 .pydevproject
 .idea
 
+var/
+
+config/runtime.json
+
 # building
 #target
 #build

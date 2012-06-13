@@ -1,0 +1,7 @@
+
+datasource:
+  db: ariustest
+  user: arius
+  pass: arius1
+
+#.
