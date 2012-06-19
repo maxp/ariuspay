@@ -1,5 +1,5 @@
 
-SimpleMath = require './s1'
+SimpleMath = require './../s1'
 
 Calc = new SimpleMath.Calculator
 

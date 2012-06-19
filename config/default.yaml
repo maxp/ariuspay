@@ -1,7 +1,10 @@
 
 datasource:
-  db: ariustest
-  user: arius
-  pass: arius1
+  db: database_name
+  user: user
+  pass: password
+
+http:
+  port: 8888
 
 #.

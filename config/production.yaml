@@ -1,0 +1,10 @@
+#
+#   ariuspay production configuration sample
+#
+
+datasource:
+  db: olkhon-arius
+  user: arius
+  pass: arius1
+
+#.
