@@ -1,6 +1,6 @@
-###
-  ariuspay application
-###
+#
+#   ariuspay application
+#
 
 VER = "ariuspay 0.0.1"
 
@@ -34,14 +34,20 @@ app = express.createServer()
 app.configure ->
   app.set "views", __dirname+"/views"
   app.set "view engine", 'jade'
-  app.set "view options", {layout: false}
+  app.set "view options", layout: true
 
+  app.use express.favicon()   # "path_to/favicon.ico"
+
+  app.use express.logger "dev"
   app.use express.bodyParser()
+
   # app.use(express.cookieParser(...));
   # app.use(express.session(...));
+  # .use(connect.session({ key: 'sid', cookie: { secure: true }}))
+
   app.use app.router
-  app.use express.static __dirname+"/inc"
-  # app.use express.static __dirname+"/inc", {maxAge: 365*24*3600*1000}
+  app.use '/inc', express.static __dirname+"/inc"
+  # app.use '/inc', express.static __dirname+"/inc", {maxAge: 365*24*3600*1000}
 
 
 app.configure "development", ->
@@ -51,12 +57,12 @@ app.configure "production", ->
   app.use express.errorHandler()
 
 
+manager = require './manager'
 
 app.get "/", (req, res) ->
   res.redirect "/payment/manager/"
 
-app.get "/payment/manager/", (req, res) ->
-  res.send "manager"
+app.get "/payment/manager/", manager.paylist
 
 app.listen config.http.port
 
