@@ -2,7 +2,7 @@
 #   ariuspay application
 #
 
-VER = "ariuspay 0.0.1"
+VER = "ariuspay 0.0.2"
 
 console.log "#{VER} starting at: "+new Date
 
@@ -21,12 +21,15 @@ else
 config = require 'config'
 express = require 'express'
 
-db = config.datasource.db
+# db = config.datasource.db
 
 
 http = require "http"
 url  = require "url"
 qs   = require "querystring"
+
+
+mdb = require './mdb'
 
 app = express.createServer()
 # key: ...
@@ -34,7 +37,7 @@ app = express.createServer()
 app.configure ->
   app.set "views", __dirname+"/views"
   app.set "view engine", 'jade'
-  app.set "view options", layout: true
+  app.set "view options", {layout: false, pretty: false, cache: true}
 
   app.use express.favicon()   # "path_to/favicon.ico"
 
@@ -51,6 +54,7 @@ app.configure ->
 
 
 app.configure "development", ->
+  app.set "view options", {layout: false, pretty: true, cache: false}
   app.use express.errorHandler {dumpExceptions: true, showStack: true}
 
 app.configure "production", ->
@@ -63,6 +67,9 @@ app.get "/", (req, res) ->
   res.redirect "/payment/manager/"
 
 app.get "/payment/manager/", manager.paylist
+
+app.get "/payment/new/", manager.pay_new
+
 
 app.listen config.http.port
 
