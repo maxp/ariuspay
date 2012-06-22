@@ -4,7 +4,7 @@
 // openssl x509 -req -in server-csr.pem -signkey server-key.pem -out server-cert.pem
 
 
-
+var fs = require('fs')
 var https = require('https');
 https.createServer({
         key: fs.readFileSync('server-key.pem'),
@@ -14,23 +14,6 @@ https.createServer({
         //...
     });
 //
-
-
-var https = require('https');
-var fs = require('fs');
-
-var hskey = fs.readFileSync('hacksparrow-key.pem');
-var hscert = fs.readFileSync('hacksparrow-cert.pem')
-
-var options = {
-    key: hskey,
-    cert: hscert
-};
-
-https.createServer(options, function (req, res) {
-    res.writeHead(200);
-    res.end("Hi from HTTPS");
-}).listen(8000);
 
 
 /*

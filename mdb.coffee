@@ -2,7 +2,7 @@
 #   ariuspay: mdb
 #
 
-_x = exports or this
+_x = exports? and exports or this
 
 mongoose = require 'mongoose'
 Schema   = mongoose.Schema

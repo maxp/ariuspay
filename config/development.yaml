@@ -4,8 +4,5 @@
 
 datasource:
   url: mongodb://localhost/ariuspay
-  db: ariuspay
-  user: arius
-  pass: arius1
 
 #.

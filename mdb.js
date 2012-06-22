@@ -2,7 +2,7 @@
 (function() {
   var PaymentSchema, Schema, config, mongoose, oid, _x;
 
-  _x = exports || this;
+  _x = (typeof exports !== "undefined" && exports !== null) && exports || this;
 
   mongoose = require('mongoose');
 
