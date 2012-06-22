@@ -19,6 +19,6 @@ _x.pay_new = (req, res) ->
 
   console.log 'pm', pm
 
-  res.render "manager/list", pay_new: pm
+  res.render "manager/new"
 
 #.

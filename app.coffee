@@ -68,7 +68,7 @@ app.get "/", (req, res) ->
 
 app.get "/payment/manager/", manager.paylist
 
-app.get "/payment/new/", manager.pay_new
+app.get "/payment/manager/new", manager.pay_new
 
 
 app.listen config.http.port

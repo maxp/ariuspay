@@ -26,9 +26,7 @@
       }
     });
     console.log('pm', pm);
-    return res.render("manager/list", {
-      pay_new: pm
-    });
+    return res.render("manager/new");
   };
 
 }).call(this);

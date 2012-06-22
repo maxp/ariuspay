@@ -15,7 +15,7 @@ mongoose.connect config.datasource.url
 PaymentSchema = new Schema
   _id: oid
   state: { type: String, default: 'new', enum: ['new', 'sent', 'paid', 'canc', 'del'] }
-  ts: { type: Date, default: new Date }
+  ts: { type: Date, default: Date.now }
 
   name: String
   email: String

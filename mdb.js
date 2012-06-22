@@ -23,7 +23,7 @@
     },
     ts: {
       type: Date,
-      "default": new Date
+      "default": Date.now
     },
     name: String,
     email: String,
