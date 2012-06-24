@@ -12,7 +12,22 @@ config  = require 'config'
 
 mongoose.connect config.datasource.url
 
-PaymentSchema = new Schema
+
+Counter = new Schema {_id: String, val: Number}
+
+Counter.statics.findAndModify = (query, sort, doc, options, callback) ->
+  @.collection.findAndModify query, sort, doc, options, callback
+
+Counters = mongoose.model 'counter', Counter
+
+_x.Counters = Counters
+
+_x.inc_counter = (name, n, cb) ->
+  Counters.findAndModify {_id: name}, [], {$inc: {val: n}}, {'new':true, upsert:true}, (err, res) ->
+    if err then cb(err) else cb(null, res.val)
+#--
+
+Payment = new Schema
   _id: oid
   state: { type: String, default: 'new', enum: ['new', 'sent', 'paid', 'canc', 'del'] }
   ts: { type: Date, default: Date.now }
@@ -23,9 +38,10 @@ PaymentSchema = new Schema
   amount: Number
 
   merc_id: String     # merchant transaction id
+  srand: String       # secure random key
   arius_id: String    # ariuspay transaction id
 #--
 
-_x.Payment = mongoose.model 'payment', PaymentSchema
+_x.Payments = mongoose.model 'payment', Payment
 
 #.

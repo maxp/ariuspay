@@ -2,7 +2,9 @@
 datasource:
   url: driver://host/database
 
-http:
+server:
+  host: localhost
   port: 8888
+  baseurl: http://localhost:888/payment/
 
 #.

@@ -77,6 +77,6 @@
 
   app.post("/payment/manager/newpay", manager.newpay_post);
 
-  app.listen(config.http.port);
+  app.listen(config.server.port);
 
 }).call(this);

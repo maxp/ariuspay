@@ -4,6 +4,13 @@ append top
     h1 Список платежей
 
 block content
-    div.
-        разный хтмл
-        и прочая фигня
+    div
+        each p in pay_list
+            .pay_item
+                = p.mecr_id
+                = p.state
+                = p.name
+                = p.email
+                = p.descr
+                = p.amount
+                = p.srand
