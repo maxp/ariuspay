@@ -2,7 +2,7 @@
 #   ariuspay: mdb
 #
 
-_x = exports? and exports or this
+_ = exports or this
 
 mongoose = require 'mongoose'
 Schema   = mongoose.Schema
@@ -20,9 +20,9 @@ Counter.statics.findAndModify = (query, sort, doc, options, callback) ->
 
 Counters = mongoose.model 'counter', Counter
 
-_x.Counters = Counters
+_.Counters = Counters
 
-_x.inc_counter = (name, n, cb) ->
+_.inc_counter = (name, n, cb) ->
   Counters.findAndModify {_id: name}, [], {$inc: {val: n}}, {'new':true, upsert:true}, (err, res) ->
     if err then cb(err) else cb(null, res.val)
 #--
@@ -42,6 +42,6 @@ Payment = new Schema
   arius_id: String    # ariuspay transaction id
 #--
 
-_x.Payments = mongoose.model 'payment', Payment
+_.Payments = mongoose.model 'payment', Payment
 
 #.
