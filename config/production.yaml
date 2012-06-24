@@ -3,6 +3,8 @@
 #
 
 datasource:
+  url: mongodb://localhost/ariuspay
+
   db: olkhon-arius
   user: arius
   pass: arius1

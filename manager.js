@@ -15,7 +15,7 @@
   _x = exports || this;
 
   _x.paylist = function(req, res) {
-    return mdb.Payments.find({}).sort('ts', -1).exec(function(err, pay_list) {
+    return mdb.Payments.find({}).desc('ts').limit(50).exec(function(err, pay_list) {
       return res.render("manager/list", {
         pay_list: pay_list
       });

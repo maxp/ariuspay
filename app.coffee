@@ -71,6 +71,10 @@ app.get "/payment/manager/", manager.paylist
 app.get  "/payment/manager/newpay", manager.newpay
 app.post "/payment/manager/newpay", manager.newpay_post
 
+#app.get "/perf", (req, res) ->
+#  res.send("111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111")
+#  res.render 'index'
+
 app.listen config.server.port
 
 #.

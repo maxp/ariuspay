@@ -15,7 +15,7 @@ _x = exports or this
 
 _x.paylist = (req, res) ->
 
-  mdb.Payments.find({}).sort('ts', -1).exec (err, pay_list) ->
+  mdb.Payments.find({}).desc('ts').limit(50).exec (err, pay_list) ->
     res.render "manager/list", {pay_list: pay_list}
 #-
 
