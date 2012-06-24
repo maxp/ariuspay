@@ -1,8 +1,6 @@
 
 datasource:
-  db: database_name
-  user: user
-  pass: password
+  url: driver://host/database
 
 http:
   port: 8888

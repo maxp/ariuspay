@@ -1,0 +1,29 @@
+extends ../layout
+
+append top
+    h1.pagetitle Новый платеж
+
+block content
+    .b-newpay
+
+        form.b-form(id="frm_newpay")
+
+            .b-field
+                label(for="name_id") Имя клиента
+                input(type="text", name="name", id="fld_name")
+
+            .b-field
+                label(for="email_id") E-mail
+                input(type="text", name="email", id="fld_email")
+
+            .b-field
+                label(for="descr_id") Назначение платежа
+                textarea(name="descr", id="fld_descr")
+
+            .b-field
+                label(for="amount_id") Сумма
+                input(type="text", name="amount", id="fld_amount")
+
+            .b-field
+                button(id="btn_newpay") Добавить
+

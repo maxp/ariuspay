@@ -1,24 +1,35 @@
 doctype html
 html
   head
-    title AriusPay interface
+    title
+        block title
+            | AriusPay interface
+    block css
+        link(rel='stylesheet', href='/inc/main.css')
     block scripts
         script(src="/inc/jquery.min.js")
         script(src="/inc/ui.js")
-    block css
-        link(rel='stylesheet', href='/inc/main.css')
   body
 
-    block top
-        | top
+    div.b-page
 
-    block content
-        | content
+        block top
+            .b-topnav
+                - var topnav = [ ['Начало', "/"], ["Платеж","/newpay"] ]
+                - var dlm = " <span class='dlm'>|</span> "
+                != dlm
+                each a in topnav
+                    a(href="/payment/manager"+a[1]) #{a[0]}
+                    != dlm
 
-    block footer
-        .b-footer
-            | ariuspay nodejs application
-            = ' '
-            a(href="https://github.com/maxp/ariuspay") https://github.com/maxp/ariuspay
+        block content
+            div(class="cn")
+                | content should be there
+
+        block footer
+            .b-footer
+                | Ariuspay nodejs application
+                = ' - '
+                a(href="https://github.com/maxp/ariuspay") https://github.com/maxp/ariuspay
 
 //.

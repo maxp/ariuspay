@@ -12,7 +12,7 @@
     });
   };
 
-  _x.pay_new = function(req, res) {
+  _x.newpay = function(req, res) {
     var pm;
     pm = new mdb.Payment({
       name: 'Vasya',
@@ -25,8 +25,13 @@
         return console.log('save err:', err);
       }
     });
-    console.log('pm', pm);
-    return res.render("manager/new");
+    return res.render("manager/newpay");
+  };
+
+  _x.newpay_post = function(req, res) {
+    return res.send({
+      ok: 1
+    });
   };
 
 }).call(this);

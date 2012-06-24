@@ -19,6 +19,7 @@ syntax: glob
 .manager
 .pydevproject
 .idea
+/*.iml
 
 var/
 

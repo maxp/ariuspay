@@ -45,8 +45,8 @@ body {
 }
 
 a { text-decoration: none; color: #00f; }
-a:visited { text-decoration: none; color: #00a; }
-a:hover { text-decoration: underline; color: #c00; }
+a:visited { text-decoration: none; color: #00b; }
+a:hover { text-decoration: underline; color: #e00; }
 
 .lf { text-align: left; }
 .rt { text-align: right; }
@@ -85,9 +85,9 @@ h6 { font-size: 0.75em; margin: 2.33em 0; }
 
 .b-form {}
 .b-form input {
-    font: normal 10pt Verdana, sans-serif; background-color: #fffcea;
+    font: normal 10pt Verdana, sans-serif; background-color: #fffeee;
     -moz-box-sizing: border-box; box-sizing: border-box;
-    border: 1px solid #ccc;
+    border: 1px solid #cde; outline-color: #cde;
     margin: 0;
 }
 .b-form button {
@@ -95,16 +95,18 @@ h6 { font-size: 0.75em; margin: 2.33em 0; }
     margin: 0;
 }
 .b-form select {
-    font: normal 10pt Verdana, sans-serif; background-color: #fffcea;
+    font: normal 10pt Verdana, sans-serif; background-color: #fffeee;
     -moz-box-sizing: border-box; box-sizing: border-box;
-    border: 1px solid #ccc;
+    border: 1px solid #cde; outline-color: #cde;
     margin: 0;
 }
 .b-form textarea {
-    font: normal 10pt Verdana, sans-serif; background-color: #fffcea;
+    font: normal 10pt Verdana, sans-serif; background-color: #fffeee;
     -moz-box-sizing: border-box; box-sizing: border-box;
-    border: 1px solid #ccc;
+    border: 1px solid #cde; outline-color: #cde;
     margin: 0;
+    display: block;
+    width: 80ex; height: 12ex;
 }
 .b-form label {
     font: normal 10pt Verdana, sans-serif;
@@ -113,15 +115,50 @@ h6 { font-size: 0.75em; margin: 2.33em 0; }
     margin-left: 4px; margin-right: 4px;
 }
 
+.b-form .b-field {
+    margin: 4px;
+}
+
 /* header */
+
+.b-topnav {
+    font-size: 9pt; border-bottom: 1px solid #eaeaea;
+    padding-bottom: 3px; margin-bottom: 4px;
+}
+.b-topnav .dlm { font-size: 8pt; color: #aaa; }
 
 /* footer */
 
 .b-footer {
+    margin-top: 8px; padding: 2px 10px;
     font-size: 8pt; color: #555;
+    text-align: right;
+    border-top: 1px solid #eaeaea;
 }
 
 /* content */
+
+.b-page {
+    margin: 2px 10px;
+}
+
+.b-page h1 {
+    margin: 12px 50px 18px 50px;
+}
+
+.b-newpay {
+    margin: 8px 20px;
+}
+
+.b-newpay .b-field label {
+    width: 140px; float: left; text-align: right; margin: 1px 6px;
+}
+
+.b-newpay #btn_newpay { margin-left: 152px; }
+.b-newpay #fld_name,
+.b-newpay #fld_email { width: 40ex; }
+
+.b-newpay #fld_amount { width: 8ex; text-align: right; }
 
 
 /*-*/
