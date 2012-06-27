@@ -17,7 +17,13 @@
   _x.paylist = function(req, res) {
     return mdb.Payments.find({}).desc('ts').limit(50).exec(function(err, pay_list) {
       return res.render("manager/list", {
-        pay_list: pay_list
+        pay_list: pay_list,
+        bill_href: function(p) {
+          var _ref;
+          if ((_ref = p.state) === 'new' || _ref === 'sent') {
+            return config.server.baseurl + "bill/" + p.merc_id + "-" + p.srand;
+          }
+        }
       });
     });
   };

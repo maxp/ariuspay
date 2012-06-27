@@ -16,7 +16,12 @@ _x = exports or this
 _x.paylist = (req, res) ->
 
   mdb.Payments.find({}).desc('ts').limit(50).exec (err, pay_list) ->
-    res.render "manager/list", {pay_list: pay_list}
+    res.render "manager/list", {
+      pay_list: pay_list,
+      bill_href: (p) ->
+        if p.state in ['new','sent']
+          config.server.baseurl+"bill/"+p.merc_id+"-"+p.srand
+    }
 #-
 
 _x.newpay = (req, res) ->

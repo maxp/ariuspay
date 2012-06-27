@@ -1,0 +1,16 @@
+doctype html
+html
+  head
+    title
+        block title
+            | AriusPay client payment form
+    block css
+        link(rel='stylesheet', href='/inc/main.css')
+    block scripts
+        script(src="/inc/jquery.min.js")
+        //- script(src="/inc/client.js")
+
+  body
+    div.b-page
+
+        #{bill.id} #{bill.srand}

@@ -4,13 +4,31 @@ append top
     h1 Список платежей
 
 block content
-    div
-        each p in pay_list
-            .pay_item
-                = p.mecr_id
-                = p.state
-                = p.name
-                = p.email
-                = p.descr
-                = p.amount
-                = p.srand
+    div.b-paylist
+        table.paylist
+            tr.h
+                th Транзакция
+                th Дата
+                th Клиент / Email / ссылка
+                th Назначение платежа
+                th Сумма
+
+            - var br = "<br/>"
+
+            each p in pay_list
+                tr.pay_item
+                    td
+                        #{p.merc_id}
+                        .state #{p.state}
+                    td.cn
+                        #{p.ts.toFormat("MM.MM.YY")}
+                    td
+                        #{p.name}!{br}#{p.email}
+                        - var bh = bill_href(p)
+                        - if( bh )
+                            != br
+                            a(href=bill_href(p)) #{p.merc_id}
+                    td
+                        #{p.descr}
+                    td.amount
+                        #{p.amount}

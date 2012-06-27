@@ -161,4 +161,24 @@ h6 { font-size: 0.75em; margin: 2.33em 0; }
 .b-newpay #fld_amount { width: 8ex; text-align: right; }
 
 
+.b-paylist {}
+.b-paylist .paylist { width: 80%; margin: 2ex auto 4ex auto; }
+
+.paylist > tbody > tr > th {
+    text-align: center; font-weight: bold; font-size: 9pt;
+    padding: 2px 4px;
+    color: #339;
+}
+.paylist > tbody > tr > td {
+    vertical-align: top; padding: 1px 4px 2px 2px; border-top: 1px solid #fff;
+    font-size: 9pt;
+}
+.paylist > tbody > tr > td .state { text-align: right; font-size: 9pt; margin: 1px 2px 3px 2px; }
+.paylist > tbody > tr > td.amount { text-align: right; padding: 1px 5px 1px 5px; }
+
+.paylist > tbody > tr.h { background-color: #bef; }
+.paylist > tbody > tr.pay_item { background-color: #f4f4f4; }
+.paylist > tbody > tr.pay_item:nth-child(2n+1) { background-color: #f9f9fa; }
+
+
 /*-*/

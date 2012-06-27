@@ -62,14 +62,17 @@ app.configure "production", ->
 
 
 manager = require './manager'
+client  = require './client'
 
-app.get "/", (req, res) ->
+app.get  "/", (req, res) ->
   res.redirect "/payment/manager/"
 
-app.get "/payment/manager/", manager.paylist
+app.get  "/payment/manager/", manager.paylist
 
 app.get  "/payment/manager/newpay", manager.newpay
 app.post "/payment/manager/newpay", manager.newpay_post
+
+app.get  "/payment/bill/:id_srand", client.bill
 
 #app.get "/perf", (req, res) ->
 #  res.send("111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111")
