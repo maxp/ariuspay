@@ -18,17 +18,17 @@ block content
             each p in pay_list
                 tr.pay_item
                     td
-                        #{p.merc_id}
+                        | #{p.merc_id}
                         .state #{p.state}
                     td.cn
-                        #{p.ts.toFormat("MM.MM.YY")}
+                        | #{p.ts.toFormat("MM.MM.YY")}
                     td
-                        #{p.name}!{br}#{p.email}
+                        | #{p.name}!{br}#{p.email}
                         - var bh = bill_href(p)
                         - if( bh )
                             != br
                             a(href=bill_href(p)) #{p.merc_id}
                     td
-                        #{p.descr}
+                        | #{p.descr}
                     td.amount
-                        #{p.amount}
+                        | #{p.amount}

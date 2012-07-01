@@ -13,4 +13,21 @@ html
   body
     div.b-page
 
-        #{bill.id} #{bill.srand}
+        | #{bill.id} #{bill.srand}
+
+        form.b-form
+
+//        client_orderid	 12/Numeric	 Идентификатор платежа в приложении клиента
+//        amount	 10/Numeric	 Сумма платежа. Дробная часть отделяется точкой.
+//        currency	 3/String	 Код валюты. Например: RUR
+//        order_desc	 125/String	 Краткое описание платежа
+//        redirect_url	 128/String	URL, на который пользователь перенаправится после оплаты. Вне зависимости от результата.
+//        ipaddress	 20/String	 Айпи плательщика
+//        control	 40/String	 Подпись параметров алгоритмом SHA-1. Описание приводится ниже.
+//        server_callback_url	 128/String	 Адрес, на который сервер передаст результат платежа после оплаты. Подробно рассмотрен в разделе Коллбек. Параметр опциональный.
+//
+//        country	 2/String	 RU	 Код страны покупателя
+//        city	 50/String	 Castle Rock	 Город
+//        zip_code	 10/String	 000000	 Почтовый код
+//        address1	 50/String	 Not specified	 Адрес плательщика
+//        email	 50/String	 email@example.org	 Адрес электронной почты плательщика
