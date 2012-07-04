@@ -27,7 +27,7 @@ _.inc_counter = (name, n, cb) ->
     if err then cb(err) else cb(null, res.val)
 #--
 
-Payment = new Schema
+Order = new Schema
   _id: oid
   state: { type: String, default: 'new', enum: ['new', 'sent', 'paid', 'canc', 'del'] }
   ts: { type: Date, default: Date.now }
@@ -37,11 +37,14 @@ Payment = new Schema
   descr: String
   amount: Number
 
-  merc_id: String     # merchant transaction id
+  order_id: String
   srand: String       # secure random key
   arius_id: String    # ariuspay transaction id
 #--
 
-_.Payments = mongoose.model 'payment', Payment
+Order.index order_id: 1
+
+_.Orders = mongoose.model 'order', Order
+
 
 #.

@@ -8,26 +8,48 @@ html
         link(rel='stylesheet', href='/inc/main.css')
     block scripts
         script(src="/inc/jquery.min.js")
-        //- script(src="/inc/client.js")
+        script(src="/inc/ui.js")
 
   body
-    div.b-page
+    div.b-page.b-bill
 
-        | #{bill.id} #{bill.srand}
+        div client_name: #{order.name}
 
-        form.b-form
+        form.b-form#frm_bill(method='POST')
 
-//        client_orderid	 12/Numeric	 Идентификатор платежа в приложении клиента
-//        amount	 10/Numeric	 Сумма платежа. Дробная часть отделяется точкой.
-//        currency	 3/String	 Код валюты. Например: RUR
-//        order_desc	 125/String	 Краткое описание платежа
-//        redirect_url	 128/String	URL, на который пользователь перенаправится после оплаты. Вне зависимости от результата.
-//        ipaddress	 20/String	 Айпи плательщика
-//        control	 40/String	 Подпись параметров алгоритмом SHA-1. Описание приводится ниже.
-//        server_callback_url	 128/String	 Адрес, на который сервер передаст результат платежа после оплаты. Подробно рассмотрен в разделе Коллбек. Параметр опциональный.
-//
-//        country	 2/String	 RU	 Код страны покупателя
-//        city	 50/String	 Castle Rock	 Город
-//        zip_code	 10/String	 000000	 Почтовый код
-//        address1	 50/String	 Not specified	 Адрес плательщика
-//        email	 50/String	 email@example.org	 Адрес электронной почты плательщика
+            div.b-field
+                label order_id
+                input(type='text', name='client_orderid', value='#{order.order_id}', readonly='1')
+            div.b-field
+                label amount
+                input(type='text', name='amount', value='#{order.amount}', readonly='1')
+            div.b-field
+                label descr
+                textarea(name='order_desc', readonly='1') #{order.descr}
+            div.b-field
+                label email
+                input(type='text', name='email', value='#{order.email}', readonly='1')
+
+            input(type='hidden', name='currency', value='RUR')
+            input(type='hidden', name='country', value='RU')
+            input(type='hidden', name='city', value='')
+            input(type='hidden', name='zip_code', value='123123')
+            input(type='hidden', name='address1', value='')
+
+            button#send Перейти к оплате
+
+
+//-        client_orderid	 12/Numeric	 Идентификатор платежа в приложении клиента
+//-        amount	 10/Numeric	 Сумма платежа. Дробная часть отделяется точкой.
+//-        currency	 3/String	 Код валюты. Например: RUR
+//-        order_desc	 125/String	 Краткое описание платежа
+//-        redirect_url	 128/String	URL, на который пользователь перенаправится после оплаты. Вне зависимости от результата.
+//-        ipaddress	 20/String	 Айпи плательщика
+//-        control	 40/String	 Подпись параметров алгоритмом SHA-1. Описание приводится ниже.
+//-        server_callback_url	 128/String	 Адрес, на который сервер передаст результат платежа после оплаты. Подробно рассмотрен в разделе Коллбек. Параметр опциональный.
+//-
+//-        country	 2/String	 RU	 Код страны покупателя
+//-        city	 50/String	 Castle Rock	 Город
+//-        zip_code	 10/String	 000000	 Почтовый код
+//-        address1	 50/String	 Not specified	 Адрес плательщика
+//-        email	 50/String	 email@example.org	 Адрес электронной почты плательщика

@@ -69,10 +69,11 @@ app.get  "/", (req, res) ->
 
 app.get  "/payment/manager/", manager.paylist
 
-app.get  "/payment/manager/newpay", manager.newpay
-app.post "/payment/manager/newpay", manager.newpay_post
+app.get  "/payment/manager/new_order", manager.new_order
+app.post "/payment/manager/new_order", manager.new_order_post
 
-app.get  "/payment/bill/:id_srand", client.bill
+app.get  "/payment/bill/:order_srand", client.bill
+app.post "/payment/bill/:order_srand", client.bill_redir
 
 #app.get "/perf", (req, res) ->
 #  res.send("111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111")

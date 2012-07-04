@@ -75,11 +75,13 @@
 
   app.get("/payment/manager/", manager.paylist);
 
-  app.get("/payment/manager/newpay", manager.newpay);
+  app.get("/payment/manager/new_order", manager.new_order);
 
-  app.post("/payment/manager/newpay", manager.newpay_post);
+  app.post("/payment/manager/new_order", manager.new_order_post);
 
-  app.get("/payment/bill/:id_srand", client.bill);
+  app.get("/payment/bill/:order_srand", client.bill);
+
+  app.post("/payment/bill/:order_srand", client.bill_redir);
 
   app.listen(config.server.port);
 

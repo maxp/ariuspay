@@ -43,12 +43,37 @@
   };
 
   $(function() {
-    return $("#frm_newpay").submit(function() {
+    return $("#frm_order").submit(function() {
       console.log(serialize_form($(this)));
-      post_json('newpay', serialize_form($(this)), function(data) {
-        return console.log('reseived', data);
+      post_json('new_order', serialize_form($(this)), function(data) {
+        console.log('recieved:', data);
+        if (data.err) {
+          console.log("data_err:", data.err);
+          return alert("data err: " + data.err);
+        } else {
+          return window.location.href = data.redir;
+        }
       }, function(xhr) {
-        return console.error('ajax error');
+        console.error('ajax error');
+        return alert("ajax error");
+      });
+      return false;
+    });
+  });
+
+  $(function() {
+    return $("#frm_bill").submit(function() {
+      post_json(window.location.href, serialize_form($(this)), function(data) {
+        console.log('bill_redir:', data);
+        if (data.err) {
+          console.log("data_err:", data.err);
+          return alert("data err: " + data.err);
+        } else {
+          return window.location.href = data.redir;
+        }
+      }, function(xhr) {
+        console.error('ajax error');
+        return alert("ajax error");
       });
       return false;
     });

@@ -146,39 +146,39 @@ h6 { font-size: 0.75em; margin: 2.33em 0; }
     margin: 12px 50px 18px 50px;
 }
 
-.b-newpay {
+.b-new_order {
     margin: 8px 20px;
 }
 
-.b-newpay .b-field label {
+.b-new_order .b-field label {
     width: 140px; float: left; text-align: right; margin: 1px 6px;
 }
 
-.b-newpay #btn_newpay { margin-left: 152px; }
-.b-newpay #fld_name,
-.b-newpay #fld_email { width: 40ex; }
+.b-new_order #btn_order { margin-left: 152px; }
+.b-new_order #fld_name,
+.b-new_order #fld_email { width: 40ex; }
 
-.b-newpay #fld_amount { width: 8ex; text-align: right; }
+.b-new_order #fld_amount { width: 8ex; text-align: right; }
 
 
-.b-paylist {}
-.b-paylist .paylist { width: 80%; margin: 2ex auto 4ex auto; }
+.b-order_list {}
+.b-order_list .order_list { width: 80%; margin: 2ex auto 4ex auto; }
 
-.paylist > tbody > tr > th {
+.order_list > tbody > tr > th {
     text-align: center; font-weight: bold; font-size: 9pt;
     padding: 2px 4px;
     color: #339;
 }
-.paylist > tbody > tr > td {
+.order_list > tbody > tr > td {
     vertical-align: top; padding: 1px 4px 2px 2px; border-top: 1px solid #fff;
     font-size: 9pt;
 }
-.paylist > tbody > tr > td .state { text-align: right; font-size: 9pt; margin: 1px 2px 3px 2px; }
-.paylist > tbody > tr > td.amount { text-align: right; padding: 1px 5px 1px 5px; }
+.order_list > tbody > tr > td .state { text-align: right; font-size: 9pt; margin: 1px 2px 3px 2px; }
+.order_list > tbody > tr > td.amount { text-align: right; padding: 1px 5px 1px 5px; }
 
-.paylist > tbody > tr.h { background-color: #bef; }
-.paylist > tbody > tr.pay_item { background-color: #f4f4f4; }
-.paylist > tbody > tr.pay_item:nth-child(2n+1) { background-color: #f9f9fa; }
+.order_list > tbody > tr.h { background-color: #bef; }
+.order_list > tbody > tr.order_item { background-color: #f4f4f4; }
+.order_list > tbody > tr.order_item:nth-child(2n+1) { background-color: #f9f9fa; }
 
 
 /*-*/

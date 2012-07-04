@@ -15,52 +15,51 @@
   _x = exports || this;
 
   _x.paylist = function(req, res) {
-    return mdb.Payments.find({}).desc('ts').limit(50).exec(function(err, pay_list) {
+    return mdb.Orders.find({}).sort('ts', -1).limit(50).exec(function(err, orders) {
       return res.render("manager/list", {
-        pay_list: pay_list,
+        orders: orders,
         bill_href: function(p) {
           var _ref;
           if ((_ref = p.state) === 'new' || _ref === 'sent') {
-            return config.server.baseurl + "bill/" + p.merc_id + "-" + p.srand;
+            return config.server.baseurl + "bill/" + p.order_id + "-" + p.srand;
           }
         }
       });
     });
   };
 
-  _x.newpay = function(req, res) {
-    return res.render("manager/newpay");
+  _x.new_order = function(req, res) {
+    return res.render("manager/new_order");
   };
 
-  _x.newpay_post = function(req, res) {
+  _x.new_order_post = function(req, res) {
     var amount, b;
     b = req.body;
     amount = parseInt(b.amount);
     if (amount > 0) {
-      return mdb.inc_counter("merc_id", 1, function(err, seq) {
-        var merc_id, pm;
-        merc_id = new Date().toFormat("YYMMDD") + lib.left_pad(seq, 6);
-        console.log('merc_id:', merc_id);
-        pm = new mdb.Payments({
-          merc_id: merc_id,
+      return mdb.inc_counter("order_id", 1, function(err, seq) {
+        var order, order_id;
+        order_id = new Date().toFormat("YYMMDD") + lib.left_pad(seq, 6);
+        order = new mdb.Orders({
+          order_id: order_id,
           srand: lib.random_digits(),
           name: b.name,
           email: b.email,
           descr: b.descr,
           amount: amount
         });
-        pm.save(function(err) {
+        order.save(function(err) {
           if (err != null) {
             return console.log('save err:', err);
           }
         });
         return res.send({
-          ok: 1
+          redir: config.server.baseurl + "manager/"
         });
       });
     } else {
       return res.send({
-        ok: 1
+        err: 1
       });
     }
   };

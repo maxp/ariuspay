@@ -4,10 +4,10 @@ append top
     h1 Список платежей
 
 block content
-    div.b-paylist
-        table.paylist
+    div.b-order_list
+        table.order_list
             tr.h
-                th Транзакция
+                th Номер заказа
                 th Дата
                 th Клиент / Email / ссылка
                 th Назначение платежа
@@ -15,10 +15,10 @@ block content
 
             - var br = "<br/>"
 
-            each p in pay_list
-                tr.pay_item
+            each p in orders
+                tr.order_item
                     td
-                        | #{p.merc_id}
+                        | #{p.order_id}
                         .state #{p.state}
                     td.cn
                         | #{p.ts.toFormat("MM.MM.YY")}
@@ -27,7 +27,7 @@ block content
                         - var bh = bill_href(p)
                         - if( bh )
                             != br
-                            a(href=bill_href(p)) #{p.merc_id}
+                            a(href=bill_href(p)) #{p.order_id}
                     td
                         | #{p.descr}
                     td.amount
