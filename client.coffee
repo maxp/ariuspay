@@ -6,7 +6,8 @@ _ = exports or this
 
 crypto = require 'crypto'
 config = require 'config'
-https  = require 'https'
+#https  = require 'https'
+request = require 'request'
 url    = require 'url'
 
 mdb    = require './mdb'
@@ -31,49 +32,36 @@ _.bill_redir = (req, res) ->
     if ord
       ep = config.arius.endpoint
       arius_url = config.arius.api_url+"sale-form/"+ep
-      r_opt = url.parse arius_url
-      r_opt.method = 'POST'
+#      r_opt = url.parse arius_url
+#      r_opt.method = 'POST'
 
       sha = crypto.createHash 'sha1'
       sha.update ep + ord.order_id + (ord.amount * 100) + ord.email
       sha.update config.arius.merc_key
 
       data =
-        order: ord
-
+        client_orderid: ord.order_id
+        email: ord.email
+        amount: ""+ord.amount+".00"
+        currency: "RUR"
+        order_desc: ord.descr
         control: sha.digest 'hex'
         redirect_url: 'http://ya.ru'
-        ip_addr: req.connection.remoteAddress   # check for x-real-ip
+        ipaddress: req.connection.remoteAddress   # check for x-real-ip
+        country: "RU"
+        city: "Irkutsk"
+        zip_code: "664000"
+        address1: "Rio de Bodaibo"
         # server_callback_url: "..."
 
-      console.log 'bill_data:', data
+      console.log 'data:', data
 
-      ar = https.request( r_opt, (h) ->
+      ar = request.post {url: arius_url, form: data}, (err, rsp, body) ->
+#          console.log 'err:', err
+#          console.log 'res:', rsp
+          console.log 'body:', body
 
-        console.log 'arius: ', h
-        console.log "statusCode: ", h.statusCode
-        console.log "headers: ", h.headers
-
-        buffer = ""
-        h.on 'data', (d) ->
-          console.log 'on_data'
-          buffer += d
-        #
-        h.on 'end', ->
-          console.log 'arius end: ', buffer
-          # decode buffer
-#          redir = "arius url"
-#          res.send {ok: 1, redir: redir}
           res.send err: 999
-        #
-        h.on 'error', (e) ->
-          console.log 'arius_err:', e
-          res.send err: 4
-        #
-      ).on('error', (e) ->
-        console.log 'ar_error:', e
-        res.send err: 3
-      ).end()
 
     else
       res.send err: 2
