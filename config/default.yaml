@@ -1,0 +1,17 @@
+
+datasource:
+  url: "driver://host/database"
+
+server:
+  host: "localhost"
+  port: 8888
+  baseurl: "http://localhost:8888/payment/"
+
+arius:
+  api_url:  "https://sandbox.ariuspay.ru/paynet/api/v2/"
+  endpoint: "161"
+  merc_key: "B9903797-nnnn-xxxx-yyyy-zzzzzzzzzzzz"
+  redirect_url: "http://example.com/"
+
+
+#.

@@ -21,6 +21,7 @@ syntax: glob
 .idea
 /*.iml
 
+# app dirs
 config/
 var/
 tmp/
