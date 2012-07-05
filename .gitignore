@@ -21,9 +21,9 @@ syntax: glob
 .idea
 /*.iml
 
+config/
 var/
-
-config/runtime.json
+tmp/
 
 # building
 #target
