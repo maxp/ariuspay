@@ -2,32 +2,28 @@
 #   ariuspay application
 #
 
-VER = "ariuspay 0.0.2"
+VERSION = "ariuspay 0.0.2"
 
-console.log "#{VER} starting at: "+new Date
+console.log "#{VERSION} starting at: "+new Date
 
 RUN_CONFS = ["development", "production"]
 
-util = require 'util'
-
 if not process.env.NODE_ENV
   process.env.NODE_ENV = 'development'
-else
-  if process.env.NODE_ENV not in RUN_CONFS
-    console.error "NODE_ENV not in "+util.inspect RUN_CONFS
-    process.exit 1
+
+node_env = process.env.NODE_ENV
+
+if node_env not in RUN_CONFS
+  console.error "NODE_ENV[#{node_env}] not in ", RUN_CONFS
+  process.exit 1
 #-
 
 config = require 'config'
 express = require 'express'
 
-# db = config.datasource.db
-
-
-http = require "http"
-url  = require "url"
-qs   = require "querystring"
-
+#http = require "http"
+#url  = require "url"
+#qs   = require "querystring"
 
 mdb = require './mdb'
 
@@ -60,24 +56,25 @@ app.configure "development", ->
 app.configure "production", ->
   app.use express.errorHandler()
 
-
 manager = require './manager'
 client  = require './client'
 
+base_uri = config.server.base_uri
+
 app.get  "/", (req, res) ->
-  res.redirect "/payment/manager/"
+  res.redirect base_uri+"manager/"
 
-app.get  "/payment/manager/", manager.paylist
+app.get  base_uri+"manager/", manager.paylist
 
-app.get  "/payment/manager/new_order", manager.new_order
-app.post "/payment/manager/new_order", manager.new_order_post
+app.get  base_uri+"manager/new_order", manager.new_order
+app.post base_uri+"manager/new_order", manager.new_order_post
+# TODO: edit order
+# app.get  base_uri+"manager/order/:id", manager.order
+# app.post base_uri+"manager/order/:id", manager.order_post
 
-app.get  "/payment/bill/:order_srand", client.bill
-app.post "/payment/bill/:order_srand", client.bill_redir
 
-#app.get "/perf", (req, res) ->
-#  res.send("111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111")
-#  res.render 'index'
+app.get  base_uri+"bill/:order_srand", client.bill
+app.post base_uri+"bill/:order_srand", client.bill_redir
 
 app.listen config.server.port
 

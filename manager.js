@@ -21,7 +21,7 @@
         bill_href: function(p) {
           var _ref;
           if ((_ref = p.state) === 'new' || _ref === 'sent') {
-            return config.server.baseurl + "bill/" + p.order_id + "-" + p.srand;
+            return config.server.base_uri + "bill/" + p.order_id + "-" + p.srand;
           }
         }
       });
@@ -54,7 +54,7 @@
           }
         });
         return res.send({
-          redir: config.server.baseurl + "manager/"
+          redir: config.server.base_uri + "manager/"
         });
       });
     } else {

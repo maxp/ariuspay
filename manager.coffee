@@ -20,7 +20,7 @@ _x.paylist = (req, res) ->
       orders: orders,
       bill_href: (p) ->
         if p.state in ['new','sent']
-          config.server.baseurl+"bill/"+p.order_id+"-"+p.srand
+          config.server.base_uri+"bill/"+p.order_id+"-"+p.srand
     }
 #-
 
@@ -51,7 +51,7 @@ _x.new_order_post = (req, res) ->
       order.save (err) ->
         console.log 'save err:', err if err?
 
-      res.send redir: config.server.baseurl+"manager/"  # list
+      res.send redir: config.server.base_uri+"manager/"  # list
     #-
   else
     res.send err: 1
